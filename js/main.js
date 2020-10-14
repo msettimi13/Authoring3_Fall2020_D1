@@ -11,16 +11,19 @@ import Team from "./modules/DataModule.js";
 
     function handleDataSet(data) {
         let userSection = document.querySelector('.user-section'),
-            userTemplate = document.querySelector('#user-template').content;
+            userTemplate = document.querySelector('#user-template').content,
+            profs = Object.keys(data);
 
-        for (let user in data) {
+            debugger;
+
+        for (let prof of profs) {
             let currentUser = userTemplate.cloneNode(true),
                 currentUserText = currentUser.querySelector('.user').children;
 
-            currentUserText[1].src = `images/${data[user].biopic}`;
-            currentUserText[2].textContent = data[user].name;
-            currentUserText[3].textContent = data[user].role;
-            currentUserText[4].textContent = data[user].nickname;
+            currentUserText[1].src = `images/${data[prof].biopic}`;
+            currentUserText[2].textContent = data[prof].name;
+            currentUserText[3].textContent = data[prof].role;
+            currentUserText[4].textContent = data[prof].nickname;
 
             // add this new user to the view
             userSection.appendChild(currentUser);
